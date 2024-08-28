@@ -79,7 +79,7 @@ const userCtrl = {
     profile: asyncHandler(async (req,res) => {
         // ? ====  FIND THE USER ====
         const user = await User.findById("66cf4d9d64214ed06c826048")
-
+            .select('-password')
         res.json({
             user
         })
