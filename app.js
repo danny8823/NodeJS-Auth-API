@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const router  = require('./routes/users')
+const errorHandler = require('./middlewares/errorHandler')
 const app = express()
 const PORT = process.env.PORT || 3001
 
@@ -17,6 +18,9 @@ app.use(express.json()) //* PASS INCOMING JSON DATA FROM THE USER
 
 // ! ROUTES
 app.use('/', router)
+
+// ! ERROR HANDLER
+app.use(errorHandler)
 
 // ! Starting the server
 app.listen(PORT,() => {
